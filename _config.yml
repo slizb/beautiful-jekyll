@@ -43,30 +43,30 @@ avatar: "/img/avatar-icon.png"
 # Change all these values or delete the ones you don't want.
 # Important: you must keep the "name" parameter, everything else you can remove
 author:
-  name: Some Person
-  email: "bradsliz@gmail.com"
-  facebook: yourname  # eg. daattali
+  name: Brad Sliz
+  # email: "email"
+  # facebook: yourname  # eg. daattali
   github: slizb    # eg. daattali
-  twitter: yourname   # eg. daattali
-  reddit: yourname    # eg. daattali
-  google-plus: +yourname   # eg. +DeanAttali or 109424658772469020925
-  linkedin: yourname  # eg. daattali
-  xing: yourname      # eg. daattali
-  stackoverflow: yourlink  # eg. "3943160/daattali"
-  snapchat: yourname  # eg. daattali
-  instagram: yourname # eg. daattali
-  youtube: yourlink   # eg. user/daattali or channel/daattali
-  spotify: yourname   # eg. daattali
-  telephone: yourphone   # eg. +14159998888
+  # twitter: yourname   # eg. daattali
+  # reddit: yourname    # eg. daattali
+  # google-plus: +yourname   # eg. +DeanAttali or 109424658772469020925
+  linkedin: Bradley Sliz  # eg. daattali
+  # xing: yourname      # eg. daattali
+  # stackoverflow: yourlink  # eg. "3943160/daattali"
+  # snapchat: yourname  # eg. daattali
+  # instagram: yourname # eg. daattali
+  # youtube: yourlink   # eg. user/daattali or channel/daattali
+  # spotify: yourname   # eg. daattali
+  # telephone: yourphone   # eg. +14159998888
 
 # Select which links to show in the footer
 footer-links-active:
   rss: false
-  facebook: true
-  email: true
-  twitter: true
+  facebook: false
+  email: false
+  twitter: false
   google-plus: false
-  github: false
+  github: true
   reddit: false
   linkedin: true
   xing: false
@@ -86,7 +86,7 @@ share-links-active:
 
 # How to display the link to the website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"  # eg. "deanattali.com/beautiful-jekyll"
+# url-pretty: "MyWebsite.com"  # eg. "deanattali.com/beautiful-jekyll"
 
 # --- Misc --- #
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
@@ -112,7 +112,7 @@ title-separator: "-"
 # --- Don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Vancouver"
+timezone: "America/Chicago"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
