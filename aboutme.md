@@ -1,16 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: About Brad
 ---
 
-My name is Inigo Montoya. I have the following qualities:
-
-- I rock a great mustache
-- I'm extremely loyal to my family
-
-What else do you need?
-
-### my history
-
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](http://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+My name is Brad Sliz. I live near Chicago, IL, where I work as a data scientist. I have specifically been focused on computer vision applications for the automatic detection of damage on cars. I have a Masters degree from Northwestern University in Predictive Analytics, and undergraduate degrees from the University of Illinois (Civil Engineering) and Eastern Illinois University (Engineering Physics). I enjoy spending time with my family, making open source software, cooking, gardening, basketball, and tennis.  
