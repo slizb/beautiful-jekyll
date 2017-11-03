@@ -30,7 +30,7 @@ Installation was not exactly simple, but also not not *too* complicated. I start
 2. download the pre-trained COCO weights (mask_rcnn_coco.h5) from the repository's releases page
 3. move the weights to the just created `Mask_RCNN directory`
 4. upgrade tensorflow to >= 1.3
-5. clone the special forked version of COCO from [https://github.com/waleedka/coco]
+5. clone the [special forked version of COCO](https://github.com/waleedka/coco)
 6. run make under `coco/PythonAPI`
 7. run python setup.py under `coco/PythonAPI`
 8. install missing dependencies using `conda` / `pip` until setup works
