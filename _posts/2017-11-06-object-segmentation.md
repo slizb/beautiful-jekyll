@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Make Your Neural Networks Pay Attantion!
+title: Make Your Neural Networks Pay Attention!
 subtitle: Visual examples and discussion on the uses of object detection and object segmentation with Mask R-CNN.
 image: /img/federer.png
 tags: [computer-vision, deep-learning]
