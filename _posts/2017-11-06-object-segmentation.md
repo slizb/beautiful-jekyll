@@ -28,11 +28,11 @@ Just this past week, the codebase for *Mask R-CNN* was [made public on GitHub](h
 Installation was not exactly simple, but also not not *too* complicated. I started with the instructions on the GitHub page, but found I needed a bit more. I went through the steps generally as follows:
 1. clone the Mask_RCNN repository
 2. download the pre-trained COCO weights (mask_rcnn_coco.h5) from the repository's releases page
-3. move the weights to the just created Mask_RCNN directory
+3. move the weights to the just created `Mask_RCNN directory`
 4. upgrade tensorflow to >= 1.3
-5. clone the special forked version of COCO from https://github.com/waleedka/coco
-6. run "make" under coco/PythonAPI
-7. run python setup.py under coco/PythonAPI
-8. install missing dependencies using conda / pip until setup works
-9. try to run demo.ipynb from jupyter and cross fingers
+5. clone the special forked version of COCO from [https://github.com/waleedka/coco]
+6. run make under `coco/PythonAPI`
+7. run python setup.py under `coco/PythonAPI`
+8. install missing dependencies using `conda` / `pip` until setup works
+9. try to run `demo.ipynb` from jupyter and cross fingers
  
