@@ -8,6 +8,7 @@ tags: [computer-vision, deep-learning]
 
 # ***THIS PAGE IS UNDER CONSTRUCTION. PLEASE DO NOT SHARE***
 
+## Introduction
 Earlier this year, Kaiming He et al released [their paper *Mask R-CNN* on arXiv](https://arxiv.org/abs/1703.06870). In it, they make some impressive claims. Here is their abstract:
 > *We present a conceptually simple, flexible, and general framework for object instance segmentation. 
 > Our approach efficiently detects objects in an image while simultaneously generating a high-quality 
