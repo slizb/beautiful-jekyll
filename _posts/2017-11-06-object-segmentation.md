@@ -70,7 +70,7 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
 Now let's take a look at some model ouputs. The demo comes with some pre-canned images that are all impressive, but I'm always skeptical, so I'm going to test with my own image. The tennis racket object class caught my eye, so I'll grab a random tennis image from google. And here it is... Roger Federer in action during a tennis match:
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/federer.jpeg" width="600">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/federer_raw.png" width="600">
 </p>
 
 Running the image through the pretrained model is simple:
