@@ -67,10 +67,10 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
  
  This object class list effectively defines the limits of the pre-trained model.  Make sure your class is in the list. If it is, you're good to go with no more training. Otherwise, you'll have to re-train the model with examples of your class.
 
-Now let's take a look at some model ouputs. The demo comes with some pre-canned images that are all impressive, but I'm always skeptical, so I'm going to test with my own image. The tennis racket object class caught my eye, so I'll grab a random tennis image from google. And here it is: Roger Federer in action during a tennis match.
+Now let's take a look at some model ouputs. The demo comes with some pre-canned images that are all impressive, but I'm always skeptical, so I'm going to test with my own image. The tennis racket object class caught my eye, so I'll grab a random tennis image from google. And here it is... Roger Federer in action during a tennis match:
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/federer.jpeg" width="500">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/federer.jpeg" width="600">
 </p>
 
 Running the image through the pretrained model is simple:
@@ -89,4 +89,6 @@ visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'],
 ```
 And here is the output:
 
-![segmented_federer](https://github.com/slizb/slizb.github.io/blob/master/img/federer.png "png")
+<p align="center">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/federer.png" width="600">
+</p>
