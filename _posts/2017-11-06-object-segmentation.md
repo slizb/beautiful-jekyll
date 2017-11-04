@@ -11,7 +11,7 @@ tags: [computer-vision, deep-learning]
 ## Overview
 #### *What is this about?*
 In this post, I walk through some hands-on examples of object detection and object segmentation using Mask R-CNN. 
-#### *Why do I care?*
+#### *Why should I care?*
 Besides being super cool, object segmentation can be an incredibly useful tool in a computer vision pipeline. Say you are training a CV model to recognize features in cars. If you have images of cars to train on, they probably contain a lot of background noise (other cars, people, snow, clouds, etc.). Object detection / segmentation can help you identify the object in your image that matters, so you can guide the attention of your model during training.
 
 ## Background
@@ -41,4 +41,50 @@ Installation was not exactly simple, but also not not *too* complicated. I start
 7. run python setup.py under `coco/PythonAPI`
 8. install missing dependencies using `conda` / `pip` until setup works
 9. try to run `demo.ipynb` from jupyter and cross fingers
+
+## Demo
+The demo.ipynb notebook that comes with the Mask R-CNN repository is really very good.  I'll use that as a starting point.
+
+After importing packages and modules, loading the pre-trained model and setting up initial parameters, we get right into the meat of the demo. First, note the object classes that are defined:
+
+```python
+class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
+               'bus', 'train', 'truck', 'boat', 'traffic light',
+               'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird',
+               'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear',
+               'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie',
+               'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball',
+               'kite', 'baseball bat', 'baseball glove', 'skateboard',
+               'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup',
+               'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple',
+               'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza',
+               'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed',
+               'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote',
+               'keyboard', 'cell phone', 'microwave', 'oven', 'toaster',
+               'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors',
+               'teddy bear', 'hair drier', 'toothbrush']
+```
  
+ This object class list effectively defines the limits of the pre-trained model.  Make sure your class is in the list. If it is, you're good to go with no more training. Otherwise, you'll have to re-train the model with examples of your class.
+
+Now let's take a look at some model ouputs. The demo comes with some pre-canned images that are all impressive, but I'm always skeptical, so I'm going to test with my own image. The tennis racket object class caught my eye, so I'll grab a random tennis image from google. And here it is: Roger Federer in action during a tennis match.
+
+![federer](https://github.com/slizb/slizb.github.io/blob/master/img/federer.jpeg "jpeg")
+
+Running the image through the pretrained model is simple:
+
+```python
+# Load a the image
+image = scipy.misc.imread('federer.jpeg')
+
+# Run detection
+results = model.detect([image], verbose=1)
+
+# Visualize results
+r = results[0]
+visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
+                            class_names, r['scores'])
+```
+And here is the output:
+
+![segmented_federer](https://github.com/slizb/slizb.github.io/blob/master/img/federer.png "png")
