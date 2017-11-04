@@ -90,5 +90,5 @@ visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'],
 And here is the output:
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/federer.png" width="600">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/federer.png" width="670">
 </p>
