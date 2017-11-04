@@ -8,8 +8,14 @@ tags: [computer-vision, deep-learning]
 
 # ***THIS PAGE IS UNDER CONSTRUCTION. PLEASE DO NOT SHARE***
 
-## Introduction
-Earlier this year, Kaiming He et al released [their paper *Mask R-CNN* on arXiv](https://arxiv.org/abs/1703.06870). In it, they make some impressive claims. Here is their abstract:
+## Overview
+#### *What is this about?*
+In this post, I walk through some hands-on examples of object detection and object segmentation using Mask R-CNN. 
+#### *Why do I care?*
+Besides being super cool, object segmentation can be an incredibly useful tool in a computer vision pipeline. Say you are training a CV model to recognize features in cars. If you have images of cars to train on, they probably contain a lot of background noise (other cars, people, snow, clouds, etc.). Object detection / segmentation can help you identify the object in your image that matters, so you can guide the attention of your model during training.
+
+## Background
+Earlier this year, Kaiming He et al released [their paper *Mask R-CNN* on arXiv](https://arxiv.org/abs/1703.06870). (If you're familiar with computer vision, you may recognize Kaiming's name from another recent contribution -[Resnet](https://arxiv.org/abs/1512.03385) ). In the *Mask R-CNN* paper, they make some impressive claims, including superior performance on a number of object detection and segmentation tasks. Here is their abstract:
 > *We present a conceptually simple, flexible, and general framework for object instance segmentation. 
 > Our approach efficiently detects objects in an image while simultaneously generating a high-quality 
 > segmentation mask for each instance. The method, called Mask R-CNN, extends Faster R-CNN by adding a 
@@ -22,7 +28,7 @@ Earlier this year, Kaiming He et al released [their paper *Mask R-CNN* on arXiv]
 > We hope our simple and effective approach will serve as a solid baseline and help ease future research in 
 > instance-level recognition. Code will be made available.*
 
-Just this past week, the codebase for *Mask R-CNN* was [made public on GitHub](https://github.com/matterport/Mask_RCNN), and it generated [a bit of buzz on Reddit](https://www.reddit.com/r/MachineLearning/comments/7a7hm1/p_tensorflow_implementation_of_mask_rcnn_for/). Since I was in need of a pre-trained object detection model, I decided to take it for a test drive, and check out its segmentation performance too.
+Just this past week, the codebase for *Mask R-CNN* was [made public on GitHub](https://github.com/matterport/Mask_RCNN), and it generated [a bit of buzz on Reddit](https://www.reddit.com/r/MachineLearning/comments/7a7hm1/p_tensorflow_implementation_of_mask_rcnn_for/). Since I was in need of a pre-trained object detection model for work, I decided to take it for a test drive, and check out its segmentation performance too.
 
 ## Installation
 Installation was not exactly simple, but also not not *too* complicated. I started with the instructions on the GitHub page, but found I needed a bit more. I went through the steps generally as follows:
