@@ -48,6 +48,7 @@ The demo.ipynb notebook that comes with the Mask R-CNN repository is really very
 After importing packages and modules, loading the pre-trained model and setting up initial parameters, we get right into the meat of the demo. First, note the object classes that are defined:
 
 ```python
+
 class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
                'bus', 'train', 'truck', 'boat', 'traffic light',
                'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird',
@@ -63,6 +64,7 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
                'keyboard', 'cell phone', 'microwave', 'oven', 'toaster',
                'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors',
                'teddy bear', 'hair drier', 'toothbrush']
+               
 ```
  
  This object class list effectively defines the limits of the pre-trained model.  Make sure your class is in the list. If it is, you're good to go with no more training. Otherwise, you'll have to re-train the model with examples of your class.
@@ -76,6 +78,7 @@ Now let's take a look at some model ouputs. The demo comes with some pre-canned 
 Running the image through the pretrained model is simple:
 
 ```python
+
 # Load a the image
 image = scipy.misc.imread('federer.jpeg')
 
@@ -86,6 +89,7 @@ results = model.detect([image], verbose=1)
 r = results[0]
 visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'], 
                             class_names, r['scores'])
+                            
 ```
 And here is the output:
 
