@@ -108,5 +108,9 @@ Though I only passed one image to the model, it is possible to pass a batch of i
 * **"masks"**: a binary array indicating the segmentation boundary for each object on the image
 
 #### *A thought before moving on*:
-Though this *Mask R-CCNN* seems to work really well out of the box, it is also pretty slow.  It took about 8 seconds to score a single image on my Mac, while consuming all 8 CPU cores. So if speed is important to you, you may consider alternatives. YOLO is one option that can perform object detection in real time:
+Though this *Mask R-CCNN* seems to work really well out of the box, it is also pretty slow.  It took about 8 seconds to score a single image on my Mac, while consuming all 8 CPU cores. So if speed is important to you, you may consider alternatives. [YOLO](https://pjreddie.com/darknet/yolo/) is one option that can perform object detection in real time:
+
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/v=VOC3huqHrss">
+</iframe>
 
