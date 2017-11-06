@@ -91,8 +91,22 @@ visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'],
                             class_names, r['scores'])
                             
 ```
+
 And here is the output:
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/federer.png" width="670">
 </p>
+
+Beautiful!  The bounding boxes are accurate, and the segmentation masks are just stunning.  The model accurately bounds the racket, the ball, and Federer himself, and the masks seem to be nearly spot on... even following the boundaries of Roger's flowing hair. The only mistakes seem to be clipping off the ends of his fingers. 
+
+Though I only passed one image to the model, it is possible to pass a batch of images as elements of a list. Thus, when I inspect the results, I only need to look at the first element.  It contains a dictionary with the following elements: 
+
+* **"rois"**: image coordinates of the object bounding boxes
+* **"class_ids"**: class ids for the detected objects
+* **"scores"**: softmax confidence associated with each object class assignment
+* **"masks"**: a binary array indicating the segmentation boundary for each object on the image
+
+#### *A thought before moving on*:
+Though this *Mask R-CCNN* seems to work really well out of the box, it is also pretty slow.  It took about 8 seconds to score a single image on my Mac, while consuming all 8 CPU cores. So if speed is important to you, you may consider alternatives. YOLO is one option that can perform object detection in real time:
+
