@@ -8,11 +8,18 @@ tags: [computer-vision, deep-learning]
 
 # ***THIS PAGE IS UNDER CONSTRUCTION. PLEASE DO NOT SHARE***
 
-## Overview
 #### *What is this about?*
 In this post, I walk through some hands-on examples of object detection and object segmentation using Mask R-CNN. 
 #### *Why should I care?*
 Besides being super cool, object segmentation can be an incredibly useful tool in a computer vision pipeline. Say you are training a CV model to recognize features in cars. If you have images of cars to train on, they probably contain a lot of background noise (other cars, people, snow, clouds, etc.). Object detection / segmentation can help you identify the object in your image that matters, so you can guide the attention of your model during training.
+
+#### *Want to learn more?*
+You'll learn a lot more from a book than my blog post... If you're interested in learning more about object detection and segmentation, check out these books:
+
+<a target="_blank"  href="https://www.amazon.com/gp/product/0470976373/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0470976373&linkCode=as2&tag=bradsliz-20&linkId=25dee7f7984f191284a8bf3d11b84e29"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=0470976373&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=0470976373" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a target="_blank"  href="https://www.amazon.com/gp/product/9811051518/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=9811051518&linkCode=as2&tag=bradsliz-20&linkId=8ec9a09862cad06d8172d58b81bbe022"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=9811051518&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=9811051518" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a target="_blank"  href="https://www.amazon.com/gp/product/331952481X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=331952481X&linkCode=as2&tag=bradsliz-20&linkId=937957f3ca82af92d2d07f122b6abf13"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=331952481X&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=331952481X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a target="_blank"  href="https://www.amazon.com/gp/product/168083116X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=168083116X&linkCode=as2&tag=bradsliz-20&linkId=6b91189d8b370a6de27a67c4e556dc88"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=168083116X&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=168083116X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 ## Background
 Earlier this year, Kaiming He et al released [their paper *Mask R-CNN* on arXiv](https://arxiv.org/abs/1703.06870). (If you're familiar with computer vision or deep learning, you may recognize Kaiming's name from another recent contribution -[Resnet](https://arxiv.org/abs/1512.03385) ). In the *Mask R-CNN* paper, they make some impressive claims, including superior performance on a number of object detection and segmentation tasks. Here is their abstract:
@@ -138,9 +145,99 @@ Here's the output:
 
 The model appropriately juggles this confusing scene. Cows are cows, cars are cars, people are people. Even people inside of cars are identified. Despite all of the background noise and object occlusion, the performance is still pretty excellent. There are some subtle mistakes, like the truck boundary bleeding onto the bus, and a couple cows being identified as two seperate objects, but some of these mistakes may even be acceptable for a human to make.
 
-If you're interested in learning more about object detection and segmentation, these books may interest you:
+Let's try one more example.  In my work, there is always a primary object -a car, which may or may not be surrounded by other objects and noise (other cars, people, snow, clouds, etc.). Here's a typical case:
 
-<a target="_blank"  href="https://www.amazon.com/gp/product/0470976373/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0470976373&linkCode=as2&tag=bradsliz-20&linkId=25dee7f7984f191284a8bf3d11b84e29"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=0470976373&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=0470976373" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-<a target="_blank"  href="https://www.amazon.com/gp/product/9811051518/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=9811051518&linkCode=as2&tag=bradsliz-20&linkId=8ec9a09862cad06d8172d58b81bbe022"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=9811051518&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=9811051518" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-<a target="_blank"  href="https://www.amazon.com/gp/product/331952481X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=331952481X&linkCode=as2&tag=bradsliz-20&linkId=937957f3ca82af92d2d07f122b6abf13"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=331952481X&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=331952481X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-<a target="_blank"  href="https://www.amazon.com/gp/product/168083116X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=168083116X&linkCode=as2&tag=bradsliz-20&linkId=6b91189d8b370a6de27a67c4e556dc88"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=168083116X&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=168083116X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<p align="center">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/car_lot.jpg" width="600">
+</p>
+
+And the model output:
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/segmented_car_lot.png" width="640">
+</p>
+
+One assumption we can make in this scenario is that the target car is also the largest identified object. Likewise, we can also apply a little logic to isolate it. In simple terms, we just, measure the area of each box.  Here's some code for doing just that:
+
+```python
+
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+def get_width(xy):
+    width = abs(xy[1] - xy[3])
+    return width
+
+def get_height(xy):
+    height = abs(xy[0] - xy[2])
+    return height
+
+def get_area(xy):
+    width = get_width(xy)
+    height = get_height(xy)
+    area = width * height
+    return area
+
+def get_biggest_box(xy_list):
+    biggest_area = 0
+    biggest_xy = []
+    for xy in xy_list:
+        area = get_area(xy)
+        if area > biggest_area:
+            biggest_area = area
+            biggest_xy = xy
+    return biggest_xy
+
+def overlay_box(image, xy): 
+    position = (xy[1], xy[0])
+    width = get_width(xy)
+    height = get_height(xy)
+    fig, ax = plt.subplots(1)
+    ax.imshow(image)
+    rect = patches.Rectangle(position, 
+                             width, 
+                             height,
+                             linewidth=1,
+                             edgecolor='r',
+                             facecolor='none')
+    ax.add_patch(rect)
+    plt.show()
+    
+```
+
+If we plug the results of our previous example into this workflow, it looks like this:
+
+```python
+
+big_box = get_biggest_box(r['rois'])
+overlay_box(image, big_box)
+
+```
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/big_car_boxed.png" width="640">
+</p>
+
+Great! We've isolated the object we care about. Let's take it a step further, and black out everything outside of our box:
+
+```python
+
+def make_box_mask(image, xy):    
+    target = image[xy[0]:xy[2], xy[1]:xy[3], :]
+    img = np.zeros_like(image)
+    img[xy[0]:xy[2], xy[1]:xy[3], :] = target
+    plt.imshow(img)
+    
+make_box_mask(image, big_box)
+
+```
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/big_car_masked.jpg" width="640">
+</p>
+
+Even Better! By doing this, we can limit the noise in our image. If we apply such a technique to all of our training images, our neural network won't even be tempted to focus on anything but the target objects. As you may have guessed, we can apply the same technique with the segmentation mask output from *Mask R-CNN*.:
+
+
+
+
