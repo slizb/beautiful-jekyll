@@ -157,7 +157,7 @@ And the model output:
     <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/segmented_car_lot.png" width="640">
 </p>
 
-One assumption we can make in this scenario is that the target car is also the largest identified object. Likewise, we can also apply a little logic to isolate it. In simple terms, we just, measure the area of each box.  Here's some code for doing just that:
+One assumption we can make in this scenario is that the target car is also the largest identified object. Likewise, we can apply a little logic to isolate it. In simple terms, we just measure the area of each box, and grab the biggest one.  Here's some code for doing just that:
 
 ```python
 
@@ -236,7 +236,7 @@ make_box_mask(image, big_box)
     <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/big_car_masked.jpg" width="640">
 </p>
 
-Even Better! By doing this, we can limit the noise in our image. If we apply such a technique to all of our training images, our neural network won't even be tempted to focus on anything but the target objects. As you may have guessed, we can apply the same technique with the segmentation mask output from *Mask R-CNN*.:
+Even Better! By doing this, we can limit the noise in our image. If we apply such a technique to all of our training images, our neural network won't even be tempted to focus on anything but the target objects. As you may have guessed, we can apply the same technique using the segmentation mask output from *Mask R-CNN*.:
 
 
 
