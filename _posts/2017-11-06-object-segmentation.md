@@ -235,7 +235,7 @@ make_box_mask(image, big_box)
     <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/big_car_masked.jpg" width="640">
 </p>
 
-Even Better! By doing this, we can limit the noise in our image. **This is really important, and can be exploited to imporve a variety of computer vision tasks.** For example, If we apply such a technique to all of the training images in a machine learning task that needs to focus on a target object, our neural network won't even be tempted to focus on anything but the target objects. 
+Even Better! By doing this, we can limit the noise in our image. **This is really important, and can be exploited to improve a variety of computer vision tasks.** For example, If we apply such a technique to all of the training images in a machine learning task that needs to focus on a target object, our neural network won't even be tempted to focus on anything but the target objects. 
 
 As you may have guessed, though, we can extend this technique further.  Let's apply the same technique using the segmentation mask output from *Mask R-CNN* for even finer results:
 
