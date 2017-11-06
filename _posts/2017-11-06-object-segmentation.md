@@ -14,7 +14,7 @@ In this post, I walk through some hands-on examples of object detection and obje
 Besides being super cool, object segmentation can be an incredibly useful tool in a computer vision pipeline. Say you are training a CV model to recognize features in cars. If you have images of cars to train on, they probably contain a lot of background noise (other cars, people, snow, clouds, etc.). Object detection / segmentation can help you identify the object in your image that matters, so you can guide the attention of your model during training.
 
 #### *Want to learn more?*
-You'll learn a lot more from a book than my blog post... If you're interested in learning more about object detection and segmentation, check out these books:
+This blog post is awesome, but you'll learn a lot more from a book than from me... If you're interested in learning more about object detection and segmentation, check out these books:
 
 <a target="_blank"  href="https://www.amazon.com/gp/product/0470976373/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0470976373&linkCode=as2&tag=bradsliz-20&linkId=25dee7f7984f191284a8bf3d11b84e29"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=0470976373&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=0470976373" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 <a target="_blank"  href="https://www.amazon.com/gp/product/9811051518/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=9811051518&linkCode=as2&tag=bradsliz-20&linkId=8ec9a09862cad06d8172d58b81bbe022"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=9811051518&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=9811051518" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
@@ -22,7 +22,7 @@ You'll learn a lot more from a book than my blog post... If you're interested in
 <a target="_blank"  href="https://www.amazon.com/gp/product/168083116X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=168083116X&linkCode=as2&tag=bradsliz-20&linkId=6b91189d8b370a6de27a67c4e556dc88"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=168083116X&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=168083116X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 ## Background
-Earlier this year, Kaiming He et al released [their paper *Mask R-CNN* on arXiv](https://arxiv.org/abs/1703.06870). (If you're familiar with computer vision or deep learning, you may recognize Kaiming's name from another recent contribution -[Resnet](https://arxiv.org/abs/1512.03385) ). In the *Mask R-CNN* paper, they make some impressive claims, including superior performance on a number of object detection and segmentation tasks. Here is their abstract:
+Earlier this year, Kaiming He et al. released [their paper *Mask R-CNN* on arXiv](https://arxiv.org/abs/1703.06870). (If you're familiar with computer vision or deep learning, you may recognize Kaiming's name from another recent contribution -[Resnet](https://arxiv.org/abs/1512.03385) ). In the *Mask R-CNN* paper, they make some impressive claims, including superior performance on a number of object detection and segmentation tasks. Here is their abstract:
 > *We present a conceptually simple, flexible, and general framework for object instance segmentation. 
 > Our approach efficiently detects objects in an image while simultaneously generating a high-quality 
 > segmentation mask for each instance. The method, called Mask R-CNN, extends Faster R-CNN by adding a 
@@ -41,7 +41,7 @@ Just this past week, the codebase for *Mask R-CNN* was [made public on GitHub](h
 Installation was not exactly simple, but also not not *too* complicated. I started with the instructions on the GitHub page, but found I needed a bit more. I went through the steps generally as follows:
 1. clone the Mask_RCNN repository
 2. download the pre-trained COCO weights (mask_rcnn_coco.h5) from the repository's releases page
-3. move the weights to the just created `Mask_RCNN directory`
+3. move the weights to the just created `Mask_RCNN` directory
 4. upgrade tensorflow to >= 1.3
 5. clone the [special forked version of COCO](https://github.com/waleedka/coco)
 6. run make under `coco/PythonAPI`
@@ -180,13 +180,13 @@ def get_area(xy):
 
 def get_biggest_box(xy_list):
     biggest_area = 0
-    biggest_xy = []
-    for xy in xy_list:
+    for i, xy in enumerate(xy_list):
         area = get_area(xy)
         if area > biggest_area:
             biggest_area = area
             biggest_xy = xy
-    return biggest_xy
+            ix = i
+    return biggest_xy, ix
 
 def overlay_box(image, xy): 
     position = (xy[1], xy[0])
@@ -209,7 +209,7 @@ If we plug the results of our previous example into this workflow, it looks like
 
 ```python
 
-big_box = get_biggest_box(r['rois'])
+big_box, big_ix = get_biggest_box(r['rois'])
 overlay_box(image, big_box)
 
 ```
@@ -236,7 +236,27 @@ make_box_mask(image, big_box)
     <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/big_car_masked.jpg" width="640">
 </p>
 
-Even Better! By doing this, we can limit the noise in our image. If we apply such a technique to all of our training images, our neural network won't even be tempted to focus on anything but the target objects. As you may have guessed, we can apply the same technique using the segmentation mask output from *Mask R-CNN*.:
+Even Better! By doing this, we can limit the noise in our image. If we apply such a technique to all of our training images, our neural network won't even be tempted to focus on anything but the target objects. As you may have guessed, we can apply the same technique using the segmentation mask output from *Mask R-CNN* for even finer results:
+
+```python
+
+def make_segmentation_mask(image, mask):
+    img = image.copy()
+    img[:,:,0] *= mask
+    img[:,:,1] *= mask
+    img[:,:,2] *= mask
+    plt.imshow(img)
+
+mask = r['masks'][:,:,big_ix]
+make_segmentation_mask(image, mask)
+
+```
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/big_car_seg_masked.png" width="640">
+</p>
+
+Wow!  Now we're left with virtually nothing but the primary car in the image. No more background noise, no more distracting objects. And its all built into a highly automatable pipeline. You may be worried about the segmentation boundaries cutting off pieces of your object, which is a valid concern. You could always add a buffer to the edges, but I'll leave that to  you to figure out. That's all, I hope you enjoyed reading!
 
 
 
