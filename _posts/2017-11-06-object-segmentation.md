@@ -2,7 +2,7 @@
 layout: post
 title: Object Detection and Segmentation in Python with Mask-RCNN
 subtitle: Visual examples and discussion on the uses of object detection and object segmentation with Mask R-CNN.
-image: /img/federer_thumb.png
+image: /img/federer_thumb.jpeg
 tags: [computer-vision, deep-learning]
 ---
 
