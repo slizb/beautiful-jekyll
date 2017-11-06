@@ -108,7 +108,13 @@ Though I only passed one image to the model, it is possible to pass a batch of i
 * **"masks"**: a binary array indicating the segmentation boundary for each object on the image
 
 #### *A thought before moving on*:
-Though this *Mask R-CCNN* seems to work really well out of the box, it is also pretty slow.  It took about 8 seconds to score a single image on my Mac, while consuming all 8 CPU cores. So if speed is important to you, you may consider alternatives. [YOLO](https://pjreddie.com/darknet/yolo/) is one option that can perform object detection in real time:
+Though *Mask R-CNN* seems to work really well out of the box, it is also pretty slow.  It took about 8 seconds to score a single image on my Mac, while consuming all 8 CPU cores. So if speed is important to you, you may consider alternatives. [YOLO](https://pjreddie.com/darknet/yolo/) is one option that can perform object detection in real time:
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/VOC3huqHrss" frameborder="0" gesture="media" allowfullscreen></iframe>
 
+That said, 
+
+
+If you're interested in learning more about object detection and segmentation, these books may interest you:
+
+<a target="_blank"  href="https://www.amazon.com/gp/product/0470976373/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0470976373&linkCode=as2&tag=bradsliz-20&linkId=0d412d46ca984bfef31292dc06b332f7"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=0470976373&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL160_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=0470976373" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
