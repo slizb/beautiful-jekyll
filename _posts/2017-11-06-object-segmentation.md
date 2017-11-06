@@ -108,7 +108,7 @@ Beautiful!  The bounding boxes are accurate, and the segmentation masks are just
 
 Though I only passed one image to the model, it is possible to pass a batch of images as elements of a list. Thus, when I inspect the results, I only need to look at the first element.  It contains a dictionary with the following elements: 
 
-* **"rois"**: image coordinates of the object bounding boxes
+* **"rois"**: "regions of interest" -image coordinates of the object bounding boxes
 * **"class_ids"**: class ids for the detected objects
 * **"scores"**: softmax confidence associated with each object class assignment
 * **"masks"**: a binary array indicating the segmentation boundary for each object on the image
