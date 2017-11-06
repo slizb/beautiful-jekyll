@@ -1,12 +1,11 @@
 ---
 layout: post
-title: Make Your Neural Networks Pay Attention!
+title: Object Detection and Segmentation in Python with Mask-RCNN
 subtitle: Visual examples and discussion on the uses of object detection and object segmentation with Mask R-CNN.
 image: /img/federer.png
 tags: [computer-vision, deep-learning]
 ---
 
-# ***THIS PAGE IS UNDER CONSTRUCTION. PLEASE DO NOT SHARE***
 
 #### *What is this about?*
 In this post, I walk through some hands-on examples of object detection and object segmentation using Mask R-CNN. 
@@ -236,7 +235,9 @@ make_box_mask(image, big_box)
     <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/big_car_masked.jpg" width="640">
 </p>
 
-Even Better! By doing this, we can limit the noise in our image. If we apply such a technique to all of our training images, our neural network won't even be tempted to focus on anything but the target objects. As you may have guessed, we can apply the same technique using the segmentation mask output from *Mask R-CNN* for even finer results:
+Even Better! By doing this, we can limit the noise in our image. **This is really important, and can be exploited to imporve a variety of computer vision tasks.** For example, If we apply such a technique to all of the training images in a machine learning task that needs to focus on a target object, our neural network won't even be tempted to focus on anything but the target objects. 
+
+As you may have guessed, though, we can extend this technique further.  Let's apply the same technique using the segmentation mask output from *Mask R-CNN* for even finer results:
 
 ```python
 
@@ -256,7 +257,15 @@ make_segmentation_mask(image, mask)
     <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/big_car_seg_masked.png" width="640">
 </p>
 
-Wow!  Now we're left with virtually nothing but the primary car in the image. No more background noise, no more distracting objects. And its all built into a highly automatable pipeline. You may be worried about the segmentation boundaries cutting off pieces of your object, which is a valid concern. You could always add a buffer to the edges, but I'll leave that to  you to figure out. That's all, I hope you enjoyed reading!
+Wow!  Now we're left with virtually nothing but the target car object in the image. No more background noise, no more distracting objects. And its all built into a highly automatable pipeline. You may be worried about the segmentation boundaries cutting off pieces of your object, which is a valid concern. You could always add a buffer to the edges, but I'll leave that to  you to figure out. 
+
+## Conclusions
+Let's wrap up what I've done here: 
+I installed *Mask R-CNN*, and tested it on a variety of images including some with a lot of noise and object occlusion. The model consistently impressed me with its performance, though it was pretty slow. Then, I demonstrated how a pre-trained object detection model like *Mask R-CNN* could be used to screen training data for machine learning tasks that need to focus on a primary object.
+
+
+
+That's all, I hope you enjoyed reading!
 
 
 
