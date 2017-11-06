@@ -130,7 +130,7 @@ And Here's the labeled ouptut image from *Mask R-CNN*:
     <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/many_segmented_cars.png" width="640">
 </p>
 
-Again, the performance is impressive. There doesn't seem to be any problem with multiple objects. In my work, though, the image usually has a bit more backgground noise, and the objects are not so distinctly separated. Most of the time, one or more objects are occluded. Lets try an example like that:
+Again, the performance is impressive. There doesn't seem to be any problem with multiple objects. In my work, though, the image usually has a bit more background noise, and the objects are not so distinctly separated. Most of the time, one or more objects are occluded. Lets try an example like that:
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/cows_and_cars.jpg" width="600">
