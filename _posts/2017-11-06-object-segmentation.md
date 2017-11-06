@@ -15,7 +15,7 @@ In this post, I walk through some hands-on examples of object detection and obje
 Besides being super cool, object segmentation can be an incredibly useful tool in a computer vision pipeline. Say you are training a CV model to recognize features in cars. If you have images of cars to train on, they probably contain a lot of background noise (other cars, people, snow, clouds, etc.). Object detection / segmentation can help you identify the object in your image that matters, so you can guide the attention of your model during training.
 
 ## Background
-Earlier this year, Kaiming He et al released [their paper *Mask R-CNN* on arXiv](https://arxiv.org/abs/1703.06870). (If you're familiar with computer vision, you may recognize Kaiming's name from another recent contribution -[Resnet](https://arxiv.org/abs/1512.03385) ). In the *Mask R-CNN* paper, they make some impressive claims, including superior performance on a number of object detection and segmentation tasks. Here is their abstract:
+Earlier this year, Kaiming He et al released [their paper *Mask R-CNN* on arXiv](https://arxiv.org/abs/1703.06870). (If you're familiar with computer vision or deep learning, you may recognize Kaiming's name from another recent contribution -[Resnet](https://arxiv.org/abs/1512.03385) ). In the *Mask R-CNN* paper, they make some impressive claims, including superior performance on a number of object detection and segmentation tasks. Here is their abstract:
 > *We present a conceptually simple, flexible, and general framework for object instance segmentation. 
 > Our approach efficiently detects objects in an image while simultaneously generating a high-quality 
 > segmentation mask for each instance. The method, called Mask R-CNN, extends Faster R-CNN by adding a 
@@ -108,12 +108,35 @@ Though I only passed one image to the model, it is possible to pass a batch of i
 * **"masks"**: a binary array indicating the segmentation boundary for each object on the image
 
 #### *A thought before moving on*:
-Though *Mask R-CNN* seems to work really well out of the box, it is also pretty slow.  It took about 8 seconds to score a single image on my Mac, while consuming all 8 CPU cores. So if speed is important to you, you may consider alternatives. [YOLO](https://pjreddie.com/darknet/yolo/) is one option that can perform object detection in real time:
+Though *Mask R-CNN* seems to work really well out of the box, it is also pretty slow.  It took about 8 seconds to score a single image on my Mac, while consuming all 8 CPU cores. So, if speed is important to you, you may consider alternatives. [*YOLO*](https://pjreddie.com/darknet/yolo/) is one option that can perform object detection in real time:
 
 <iframe width="854" height="480" src="https://www.youtube.com/embed/VOC3huqHrss" frameborder="0" gesture="media" allowfullscreen></iframe>
 
-That said, 
+That said, *Mask R-CNN* seems to perform just fine for my usecase. Let's try another example. For my project, I need to detect cars. How will it perform if there are multiple cars to segment? Here's an image with a lot of cars:
 
+<p align="center">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/many_cars.jpg" width="600">
+</p>
+
+And Here's the labeled ouptut image from *Mask R-CNN*:
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/many_segmented_cars.png" width="640">
+</p>
+
+Again, the performance is impressive. There doesn't seem to be any problem with multiple objects. In my work, though, the image usually has a bit more backgground noise, and the objects are not so distinctly separated. Most of the time, one or more objects are occluded. Lets try an example like that:
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/cows_and_cars.jpg" width="600">
+</p>
+
+Here's the output:
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/slizb/slizb.github.io/master/img/segmented_cows_and_cars.png" width="645">
+</p>
+
+The model appropriately juggles this confusing scene. Cows are cows, cars are cars, people are people. Even people inside of cars are identified. Despite all of the background noise and object occlusion, the performance is still pretty excellent. There are some subtle mistakes, like the truck boundary bleeding onto the bus, and a couple cows being identified as two seperate objects, but some of these mistakes may even be acceptable for a human to make.
 
 If you're interested in learning more about object detection and segmentation, these books may interest you:
 
