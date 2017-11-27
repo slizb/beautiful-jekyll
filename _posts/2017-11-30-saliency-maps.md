@@ -1,7 +1,8 @@
 ---
 layout: post
-title: Where the Machine is Looking
+title: Where the Machines are Looking
 subtitle: Visualization of neural networks using saliency maps.
+image: /img/kid_backpack_thumb.png
 tags: [computer-vision, deep-learning]
 ---
 
