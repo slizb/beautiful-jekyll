@@ -29,3 +29,21 @@ In other words, saliency can be computed for a given image, and a given class. I
 There happens to be a great python package by Raghavendra Kotikalapudi called [*keras-vis*](https://github.com/raghakot/keras-vis) that supports saliency map visualization for Keras models. Lets try it out!
 
 ## Demo
+First, we need a model to test out. For simplicity, let's just use a pre-trained model... I choose ResNet:
+
+```python
+from keras.applications.resnet50 import ResNet50
+
+model = ResNet50()
+```
+
+Next, according to the Kotikalapudi, we need to switch the softmax activation out for linear or the results might be suboptimal, since the gradient of the output node will depend on all the other node activations. Doing this in keras is tricky, so he provides `utils.apply_modifications` to make it easy. 
+
+```python
+from vis.utils import utils
+from keras import activations
+
+model.layers[-1].activation = activations.linear
+model = utils.apply_modifications(model)
+```
+
