@@ -101,4 +101,18 @@ plt.imshow(grads)
     <img src="https://slizb.github.io/img/posts/saliency_maps/kitten_saliency.jpg" width="500">
 </p>
 
+Very nice! The saliency map shows us which pixels contribute most to classifying this image as the *'tabby'* class. It looks good; most of the attention of the network is right around the body of the cat.  However, its a bit choppy to my eyes.  Let's smoothe out the result with a gaussian filter:
+
+```python
+
+import scipy.ndimage as ndimage
+
+smoothe = ndimage.gaussian_filter(grads[:,:,2], sigma=5) 
+plt.imshow(kitten_img)
+plt.imshow(smoothe, alpha=.7)
+plt.axis('off')
+plt.show()
+
+```
+
 
