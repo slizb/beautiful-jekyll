@@ -154,4 +154,7 @@ show_side_by_side(bunny_chicks_img, saliency_map)
 
 ```
 
+<p align="center">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/bunny_chicks.png" width="500">
+</p>
 
