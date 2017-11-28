@@ -128,7 +128,7 @@ def compute_saliency_map(model, array, target_class, layer_idx=-1):
     smoothe = ndimage.gaussian_filter(grads[:,:,2], sigma=5) 
     return smoothe
 
-def render_img_on_grid(img, pos):
+def render_img_on_grid(img, pos, grid):
     ax = plt.subplot(grid[pos])
     ax.imshow(img)
     ax.set_xticks([])
@@ -137,8 +137,8 @@ def render_img_on_grid(img, pos):
 
 def show_side_by_side(img, saliency_map):
     grid = gridspec.GridSpec(1, 2, wspace=0.)
-    render_img_on_grid(img, 0)
-    ax = render_img_on_grid(img, 1)
+    render_img_on_grid(img, 0, grid)
+    ax = render_img_on_grid(img, 1, grid)
     ax.imshow(saliency_map, alpha=.7)
     plt.show()
     
