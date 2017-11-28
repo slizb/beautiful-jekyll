@@ -17,3 +17,15 @@ decision making process can indeed be complex, its not all hidden to us, and sal
 #### *Want to learn more?*
 This blog post is awesome, but you'll learn a lot more from a book than from me... If you're interested in learning more about 
 computer vision, check out these books:
+
+## Background
+One of the biggest critiques of deep learning models is that they have limited interpretability. It turns out that [multiple techniques have been developed](http://cs231n.github.io/understanding-cnn/) specifically to visualize how they make decisions. One such technique is known as saliency mapping, discussed by Karen Simonyan et al. in their paper [*Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps*](https://arxiv.org/pdf/1312.6034.pdf). In their paper, they describe saliency like this:
+> Another interpretation of computing the image-specific class saliency using the class score derivative
+> is that the magnitude of the derivative indicates which pixels need to be changed the least to affect 
+> the class score the most. One can expect that such pixels correspond to the object location in the image. 
+
+In other words, saliency can be computed for a given image, and a given class. It tells us which pixels in the image contribute most to the model's classification of that class. Cool!
+
+There happens to be a great python package by Raghavendra Kotikalapudi called [*keras-vis*](https://github.com/raghakot/keras-vis) that supports saliency map visualization for Keras models. Lets try it out!
+
+## Demo
