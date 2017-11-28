@@ -115,4 +115,6 @@ plt.show()
 
 ```
 
-
+<p align="center">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/kitten_gaussian.jpg" width="500">
+</p>
