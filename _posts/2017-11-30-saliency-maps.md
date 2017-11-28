@@ -32,22 +32,52 @@ There happens to be a great python package by Raghavendra Kotikalapudi called [*
 First, we need a model to test out. For simplicity, let's just use a pre-trained model... I choose ResNet:
 
 ```python
+
 from keras.applications.resnet50 import ResNet50
 
 model = ResNet50()
+
 ```
 
 Next, according to Kotikalapudi, we need to switch the softmax activation out for linear or the results might be suboptimal, since the gradient of the output node will depend on all the other node activations. Doing this in keras is tricky, so he provides `utils.apply_modifications` to make it easy. 
 
 ```python
+
 from vis.utils import utils
 from keras import activations
 
 model.layers[-1].activation = activations.linear
 model = utils.apply_modifications(model)
+
 ```
-Now, let's pick an image to classify. ResNet was trained on the ILSVRC data (Imagenet), so we need to be sure that the image we choose depicts one of the classes from ILSVRC. I know that some of the classes are for cats, so lets try out this cute kitten:
+Now, let's pick an image to classify. ResNet was trained on the ILSVRC data (Imagenet), so we need to be sure that the image we choose depicts one of its' classes. I know that some of the classes are fcats, so lets try out this cute kitten:
 
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/kitten.jpg" width="670">
 </p>
+
+Indeed, when we predict, the top results are cats:
+
+```python
+
+from keras.applications import imagenet_utils 
+
+def make_prediction(img_array):
+    x = img_array.copy()
+    x = imagenet_utils.preprocess_input(x)
+    img_arr_batch = x.reshape((1,) + x.shape)
+    soft_preds = model.predict(img_arr_batch)
+    prediction = soft_preds.argmax()
+    detailed_prediction = imagenet_utils.decode_predictions(soft_preds)
+    return prediction, detailed_prediction
+
+pred, top_5 = make_prediction(kitten)
+
+print(top_5)
+
+```
+ [[('n02123045', 'tabby', 8.4959364),\n
+   ('n02129165', 'lion', 8.1750641),
+   ('n02123394', 'Persian_cat', 7.8045616),
+   ('n02123159', 'tiger_cat', 7.1740088),
+   ('n02124075', 'Egyptian_cat', 6.7863522)]]
