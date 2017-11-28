@@ -53,7 +53,7 @@ model = utils.apply_modifications(model)
 Now, let's pick an image to classify. ResNet was trained on the ILSVRC data (Imagenet), so we need to be sure that the image we choose depicts one of its' classes. I know that some of the classes are fcats, so lets try out this cute kitten:
 
 <p align="center">
-    <img src="https://slizb.github.io/img/posts/saliency_maps/kitten.jpg" width="670">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/kitten.jpg" width="500">
 </p>
 
 Indeed, when we predict, the top results are cats:
@@ -89,9 +89,16 @@ Now let's make a saliency map:
 from vis.visualization import visualize_saliency
 
 grads = visualize_saliency(model, layer_idx, filter_indices=true_label, seed_input=kitten)
+
+plt.imshow(kitten_img)
+plt.imshow(grads, alpha=.6)
+plt.axis('off')
 plt.imshow(grads)
 
 ```
 
+<p align="center">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/kitten_saliency.jpg" width="500">
+</p>
 
 
