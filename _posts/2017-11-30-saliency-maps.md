@@ -76,10 +76,10 @@ pred, top_5 = make_prediction(kitten)
 print(top_5)
 
 ```
- [[('n02123045', 'tabby', 8.4959364),\n
-   ('n02129165', 'lion', 8.1750641),
-   ('n02123394', 'Persian_cat', 7.8045616),
-   ('n02123159', 'tiger_cat', 7.1740088),
+ [[('n02123045', 'tabby', 8.4959364),<br>
+   ('n02129165', 'lion', 8.1750641),<br>
+   ('n02123394', 'Persian_cat', 7.8045616),<br>
+   ('n02123159', 'tiger_cat', 7.1740088),<br>
    ('n02124075', 'Egyptian_cat', 6.7863522)]]
 
 Now let's make a saliency map:
@@ -150,10 +150,18 @@ Now we're ready for rapid testing. Here's an image with two classes and its resu
 
 pred, top_5 = make_prediction(bunny_chicks)
 saliency_map = compute_saliency_map(model, array=bunny_chicks, target_class=pred)
+
+print(top_5)
 show_side_by_side(bunny_chicks_img, saliency_map)
 
 ```
 
+[[('n01514859', 'hen', 0.31091088), <br>
+   ('n02490219', 'marmoset', 0.23129804),<br>
+   ('n02494079', 'squirrel_monkey', 0.13025102),<br>
+   ('n02342885', 'hamster', 0.08201123),<br>
+   ('n02483362', 'gibbon', 0.039816864)]]
+   
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/bunny_chicks.png" width="500">
 </p>
