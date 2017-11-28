@@ -166,6 +166,8 @@ show_side_by_side(bunny_chicks_img, saliency_map)
     <img src="https://slizb.github.io/img/posts/saliency_maps/bunny_chicks.png" width="800">
 </p>
 
-Excellent. The model classifies this image as 'hen' and it interestingly focuses most of its attention on just one of the hens. What if the image contained two related objects, where the presence of one was an indication of the presence of the other? Like a can and a can opener:
+Excellent. The model classifies this image as 'hen' and it interestingly focuses most of its attention on just one of the hens. What if the image contained two related objects, where the presence of one was an indication of the presence of the other? Like a can and a can opener, or a boy wearing a backpack, or a person playing an instrument:
 
-
+<p align="center">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/can_opener.png" width="800">
+</p>
