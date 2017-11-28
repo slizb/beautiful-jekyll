@@ -171,3 +171,11 @@ Excellent. The model classifies this image as 'hen' and it interestingly focuses
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/can_opener.png" width="800">
 </p>
+
+<p align="center">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/boy_backpack.png" width="800">
+</p>
+
+<p align="center">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/accordion_map.png" width="800">
+</p>
