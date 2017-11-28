@@ -81,3 +81,17 @@ print(top_5)
    ('n02123394', 'Persian_cat', 7.8045616),
    ('n02123159', 'tiger_cat', 7.1740088),
    ('n02124075', 'Egyptian_cat', 6.7863522)]]
+
+Now let's make a saliency map:
+
+```python
+
+from vis.visualization import visualize_saliency
+
+grads = visualize_saliency(model, layer_idx, filter_indices=true_label, seed_input=kitten)
+plt.imshow(grads)
+
+```
+
+
+
