@@ -118,3 +118,40 @@ plt.show()
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/kitten_gaussian.jpg" width="500">
 </p>
+
+Beautiful! The gaussian filter makes the saliency map much more interpretable. Now it is clear that the model is indeed focusing its attention on the cat, which is what we want to see. This example is rather simple, though. How about an image with two classes in it? Or lots of backbround noise? Or context clues? First, let's generalize our workflow with a few helper functions:
+
+```python
+
+def compute_saliency_map(model, array, target_class, layer_idx=-1):
+    grads = visualize_saliency(model, layer_idx, filter_indices=target_class, seed_input=array)
+    smoothe = ndimage.gaussian_filter(grads[:,:,2], sigma=5) 
+    return smoothe
+
+def render_img_on_grid(img, pos):
+    ax = plt.subplot(grid[pos])
+    ax.imshow(img)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    return ax
+
+def show_side_by_side(img, saliency_map):
+    grid = gridspec.GridSpec(1, 2, wspace=0.)
+    render_img_on_grid(img, 0)
+    ax = render_img_on_grid(img, 1)
+    ax.imshow(saliency_map, alpha=.7)
+    plt.show()
+    
+```
+
+Now we're ready for rapid testing. Here's an image with two classes and its result:
+
+```python
+
+pred, top_5 = make_prediction(bunny_chicks)
+saliency_map = compute_saliency_map(model, array=bunny_chicks, target_class=pred)
+show_side_by_side(bunny_chicks_img, saliency_map)
+
+```
+
+
