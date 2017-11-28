@@ -46,5 +46,8 @@ from keras import activations
 model.layers[-1].activation = activations.linear
 model = utils.apply_modifications(model)
 ```
-Let's pick an image to classify. ResNet was trained on the ILSVRC data (Imagenet), so we need to be sure that the image we choose depicts one of the classes from ILSVRC. I know that some of the classes are for cats, so lets try out this cute kitten:
+Now, let's pick an image to classify. ResNet was trained on the ILSVRC data (Imagenet), so we need to be sure that the image we choose depicts one of the classes from ILSVRC. I know that some of the classes are for cats, so lets try out this cute kitten:
 
+<p align="center">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/kitten.jpg" width="670">
+</p>
