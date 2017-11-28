@@ -37,7 +37,7 @@ from keras.applications.resnet50 import ResNet50
 model = ResNet50()
 ```
 
-Next, according to the Kotikalapudi, we need to switch the softmax activation out for linear or the results might be suboptimal, since the gradient of the output node will depend on all the other node activations. Doing this in keras is tricky, so he provides `utils.apply_modifications` to make it easy. 
+Next, according to Kotikalapudi, we need to switch the softmax activation out for linear or the results might be suboptimal, since the gradient of the output node will depend on all the other node activations. Doing this in keras is tricky, so he provides `utils.apply_modifications` to make it easy. 
 
 ```python
 from vis.utils import utils
@@ -46,4 +46,5 @@ from keras import activations
 model.layers[-1].activation = activations.linear
 model = utils.apply_modifications(model)
 ```
+Let's pick an image to classify. ResNet was trained on the ILSVRC data (Imagenet), so we need to be sure that the image we choose depicts one of the classes from ILSVRC. I know that some of the classes are for cats, so lets try out this cute kitten:
 
