@@ -24,7 +24,7 @@ One of the biggest critiques of deep learning models is that they have limited i
 > is that the magnitude of the derivative indicates which pixels need to be changed the least to affect 
 > the class score the most. One can expect that such pixels correspond to the object location in the image. 
 
-In other words, saliency can be computed for a given image, and a given class. It tells us which pixels in the image contribute most to the model's classification of that class. Cool!
+In other words, saliency can be computed for a given image, and a given class. **It tells us which pixels in the image contribute most to the model's classification of that class.** Cool!
 
 There happens to be a great python package by Raghavendra Kotikalapudi called [*keras-vis*](https://github.com/raghakot/keras-vis) that supports saliency map visualization for Keras models. Lets try it out!
 
@@ -166,7 +166,7 @@ show_side_by_side(bunny_chicks_img, saliency_map, top_5)
     <img src="https://slizb.github.io/img/posts/saliency_maps/bunny_chicks.png" width="800">
 </p>
 
-Excellent. The model classifies this image as 'hen' and it interestingly focuses most of its attention on just one of the hens. What if the image contained two related objects, where the presence of one was an indication of the presence of the other? Like a can and a can opener, or a boy wearing a backpack, or a person playing an instrument:
+Excellent. The model classifies this image as 'hen' and it interestingly focuses most of its attention on just one of the hens. What if the image contained two related objects, where the presence of one supports the presence of the other? Like a can and a can opener, or a boy wearing a backpack, or a person playing an instrument:
 
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/can_opener.png" width="800">
@@ -179,3 +179,6 @@ Excellent. The model classifies this image as 'hen' and it interestingly focuses
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/accordion_map.png" width="800">
 </p>
+
+I find the model's attention in the can opener image quite interesting. It seems to focus on the can almost as much as it does on the opener! Perhaps this is evidence that **the model has learned this relevant context clue** for the can opener class? Similarly, in the image of the accordion, the model focuses a lot of attention on the person holding the instrument -another valuable context clue.
+
