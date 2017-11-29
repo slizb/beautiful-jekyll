@@ -182,3 +182,4 @@ Excellent. The model classifies this image as 'hen' and it interestingly focuses
 
 I find the model's attention in the can opener image quite interesting. It seems to focus on the can almost as much as it does on the opener! Perhaps this is evidence that **the model has learned this relevant context clue** for the can opener class? Similarly, in the image of the accordion, the model focuses a lot of attention on the person holding the instrument -another valuable context clue.
 
+Next, consider an example where the model does *not* pay attention to the primary object -a basketball:
