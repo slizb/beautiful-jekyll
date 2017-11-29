@@ -183,3 +183,26 @@ Excellent. The model classifies this image as 'hen' and it interestingly focuses
 I find the model's attention in the can opener image quite interesting. It seems to focus on the can almost as much as it does on the opener! Perhaps this is evidence that **the model has learned this relevant context clue** for the can opener class? Similarly, in the image of the accordion, the model focuses a lot of attention on the person holding the instrument -another valuable context clue.
 
 Next, consider an example where the model does *not* pay attention to the primary object -a basketball:
+
+<p align="center">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/dirk.png" width="800">
+</p>
+
+<p align="center">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/vince.png" width="800">
+</p>
+
+The model labels the above images as basketball.  However, instead of focusing on the basketball in the images, the model is looking elsewhere - at the defender, or the arena's background. While the model may again be picking up on important context clues, this is a curious behavior. It suggests that the model is not putting much weight on the target object, and that makes me suspicious of it's ability to generalize and identify basketballs in other environments, or the same enviornment without a basketball. Let's try masking the basketball from the image, and see what happens:
+
+```python
+
+from scipy.misc import toimage
+
+dirk_no_ball = dirk.copy()
+dirk_no_ball[5:45, 35:75] = 0 
+
+```
+
+When we run this through our ResNet model, here's what comes out:
+
+
