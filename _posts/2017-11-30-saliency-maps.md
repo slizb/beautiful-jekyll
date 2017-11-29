@@ -135,11 +135,19 @@ def render_img_on_grid(img, pos, grid):
     ax.set_yticks([])
     return ax
 
-def show_side_by_side(img, saliency_map):
+def show_side_by_side(img, saliency_map, top_5):
+    labels = [x[1] for x in top_5[0]]
+    props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
     grid = gridspec.GridSpec(1, 2, wspace=0.)
     render_img_on_grid(img, 0, grid)
     ax = render_img_on_grid(img, 1, grid)
     ax.imshow(saliency_map, alpha=.7)
+    ax.text(0.05, 0.05, '\n'.join(labels), 
+            transform=ax.transAxes, fontsize=14,
+            verticalalignment='bottom', bbox=props)
+    ax.text(0.05, 0.05, '\n'.join([labels[0], '', '', '', '']), 
+            transform=ax.transAxes, fontsize=14,
+            verticalalignment='bottom', color='red')
     plt.show()
     
 ```
@@ -150,18 +158,10 @@ Now we're ready for rapid testing. Here's an image with two classes and its resu
 
 pred, top_5 = make_prediction(bunny_chicks)
 saliency_map = compute_saliency_map(model, array=bunny_chicks, target_class=pred)
-
-print(top_5)
-show_side_by_side(bunny_chicks_img, saliency_map)
+show_side_by_side(bunny_chicks_img, saliency_map, top_5)
 
 ```
 
-[[('n01514859', 'hen', 12.404806),<br>
-   ('n02490219', 'marmoset', 12.109007),<br>
-   ('n02494079', 'squirrel_monkey', 11.534763),<br>
-   ('n02342885', 'hamster', 11.072156),<br>
-   ('n02483362', 'gibbon', 10.34959)]]
-   
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/bunny_chicks.png" width="800">
 </p>
