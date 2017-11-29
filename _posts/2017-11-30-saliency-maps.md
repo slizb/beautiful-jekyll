@@ -209,3 +209,4 @@ When we run this through our ResNet model, here's what comes out:
     <img src="https://slizb.github.io/img/posts/saliency_maps/dirk_no_ball.png" width="800">
 </p>
 
+The result is barely different when the basketball is removed! And, amazingly, the model still classifies the image as basketball. This is either good and an impressive display of the model's ability to pick up on visual context, or bad and a shocking display of over-fitting.
