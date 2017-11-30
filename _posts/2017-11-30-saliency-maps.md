@@ -166,7 +166,10 @@ show_side_by_side(bunny_chicks_img, saliency_map, top_5)
     <img src="https://slizb.github.io/img/posts/saliency_maps/bunny_chicks.png" width="800">
 </p>
 
-Excellent. The model classifies this image as 'hen' and it interestingly focuses most of its attention on just one of the hens. What if the image contained two related objects, where the presence of one supports the presence of the other? Like a can and a can opener, or a boy wearing a backpack, or a person playing an instrument:
+Excellent. The model classifies this image as 'hen' and it interestingly focuses most of its attention on just one of the hens. 
+
+## Visual Context
+What if the image contained two related objects, where the presence of one supports the presence of the other? Like a can and a can opener, or a boy wearing a backpack, or a person playing an instrument? These are examples of visual context clues, and they make for some interesting thought experiments:
 
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/can_opener.png" width="800">
@@ -182,7 +185,8 @@ Excellent. The model classifies this image as 'hen' and it interestingly focuses
 
 I find the model's attention in the can opener image quite interesting. It seems to focus on the can almost as much as it does on the opener! Perhaps this is evidence that **the model has learned this relevant context clue** for the can opener class? Similarly, in the image of the accordion, the model focuses a lot of attention on the person holding the instrument -another valuable context clue.
 
-Next, consider an example where the model does *not* pay attention to the primary object -a basketball:
+## Distraction: Revealing potential pitfalls
+Next, consider an example where the model does *not* pay attention to the primary object. In this case, the model pays more attention to other things in the scene than it does to the target class -a basketball:
 
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/dirk.png" width="800">
@@ -192,7 +196,7 @@ Next, consider an example where the model does *not* pay attention to the primar
     <img src="https://slizb.github.io/img/posts/saliency_maps/vince.png" width="800">
 </p>
 
-The model labels the above images as basketball.  However, instead of focusing on the basketball in the images, the model is looking elsewhere - at the defender, or the arena's background. While the model may again be picking up on important context clues, this is a curious behavior. It suggests that the model is not putting much weight on the target object, and that makes me suspicious of it's ability to generalize and identify basketballs in other environments, or the same enviornment without a basketball. Let's try masking the basketball from the top image, and see what happens:
+The model labels the above images as basketball.  However, instead of focusing on the basketball in the images, the model is looking elsewhere - at the defender, or the arena's background. While the model may again be picking up on important context clues, this is a curious behavior. It suggests that the model is not putting much relative weight on the target object, and that makes me suspicious of it's ability to generalize and identify basketballs in other environments, or the same enviornment without a basketball. Let's try masking the basketball from the top image, and see what happens:
 
 ```python
 
@@ -209,4 +213,10 @@ When we run this through our ResNet model, here's what comes out:
     <img src="https://slizb.github.io/img/posts/saliency_maps/dirk_no_ball.png" width="800">
 </p>
 
-The result is barely different when the basketball is removed! And, amazingly, the model still classifies the image as basketball. This is either an impressive display of the model's ability to pick up on visual context, or a disapointing indication of over-fitting.
+The result is barely different when the basketball is removed! And, amazingly, the model still classifies the image as basketball. This is either an impressive display of the model's ability to pick up on visual context, or a disapointing indication of over-fitting. Either way, this example conveys the powerful insight available in saliency maps.
+
+## Conclusions
+
+Let's recap up what I've done here. I introduced saliency maps, which tell us which pixels in an image contribute most to a model’s classification of that image to a given class. Then, I demonstrated how to make a saliency map using the *keras-vis* package, and I used a gaussian filter to smoothe out the results for improved interpretation. Finally, I used some saliency map examples to demonstrate the concepts of visual context learning, and poor generalization.
+
+That's all!  I hope you enjoyed the post!
