@@ -196,7 +196,7 @@ Next, consider an example where the model does *not* pay attention to the primar
     <img src="https://slizb.github.io/img/posts/saliency_maps/vince.png" width="800">
 </p>
 
-The model labels the above images as basketball.  However, instead of focusing on the basketball in the images, the model is looking elsewhere - at the defender, or the arena's background. While the model may again be picking up on important context clues, this is a curious behavior. It suggests that the model is not putting much relative weight on the target object, and that makes me suspicious of it's ability to generalize and identify basketballs in other environments, or the same enviornment without a basketball. Let's try masking the basketball from the top image, and see what happens:
+The model labels the above images as basketball.  However, instead of focusing on the basketball in the images, the model is mostly looking elsewhere - at the defender, or the arena's background. While the model may again be picking up on important context clues, this is a curious behavior. It suggests that the model is not putting much relative weight on the target object, and that makes me suspicious of it's ability to generalize and identify basketballs in other environments, or the same enviornment without a basketball. Let's try masking the basketball from the top image, and see what happens:
 
 ```python
 
