@@ -51,7 +51,7 @@ model.layers[-1].activation = activations.linear
 model = utils.apply_modifications(model)
 
 ```
-Now, let's pick an image to classify. ResNet was trained on the ILSVRC data (Imagenet), so we need to be sure that the image we choose depicts one of its' classes. I know that some of the classes are fcats, so lets try out this cute kitten:
+Now, let's pick an image to classify. ResNet was trained on the ILSVRC data (Imagenet), so we need to be sure that the image we choose depicts one of its' classes. I know that some of the classes are cats, so lets try out this cute kitten:
 
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/kitten.jpg" width="500">
@@ -184,10 +184,10 @@ What if the image contained two related objects, where the presence of one suppo
     <img src="https://slizb.github.io/img/posts/saliency_maps/accordion_map.png" width="800">
 </p>
 
-I find the model's attention in the can opener image quite interesting. It seems to focus on the can almost as much as it does on the opener! Perhaps this is evidence that **the model has learned this relevant context clue** for the can opener class? Similarly, in the image of the accordion, the model focuses a lot of attention on the person holding the instrument -another valuable context clue.
+I find the model's attention in the can opener image quite interesting. It seems to focus on the can almost as much as it does on the opener! Perhaps this is evidence that **the model has learned this relevant context clue** for the can opener class? Similarly, in the image of the accordion, the model focuses a lot of attention on the person holding the instrument -another valuable context clue, for accordions are to be played, and they cannot be played unless someone holds them!
 
 ## Distraction: Revealing potential pitfalls
-Next, consider an example where the model does *not* pay attention to the primary object. In this case, the model pays more attention to other things in the scene than it does to the target class -a basketball:
+Next, consider an example where the model does *not* pay attention to the primary object. In these examples, the model pays more attention to other things in the scene than it does to the target class -a basketball:
 
 <p align="center">
     <img src="https://slizb.github.io/img/posts/saliency_maps/dirk.png" width="800">
@@ -197,7 +197,7 @@ Next, consider an example where the model does *not* pay attention to the primar
     <img src="https://slizb.github.io/img/posts/saliency_maps/vince.png" width="800">
 </p>
 
-The model labels the above images as basketball.  However, instead of focusing on the basketball in the images, the model is mostly looking elsewhere - at the defender, or the arena's background. While the model may again be picking up on important context clues, this is a curious behavior. It suggests that the model is not putting much relative weight on the target object, and that makes me suspicious of it's ability to generalize and identify basketballs in other environments, or the same enviornment without a basketball. Let's try masking the basketball from the top image, and see what happens:
+The model labels the above images as basketball.  However, instead of focusing on the basketball in the images, the model is mostly looking elsewhere - at the defender, or the arena's background. While the model may again be picking up on important context clues, this is a curious behavior. It suggests that the model is not putting much relative weight on the target object. That makes me suspicious of it's ability to generalize to basketballs in other environments. I also how it would perform given the same enviornment without a basketball. Let's try masking the basketball from the top image, and see what happens:
 
 ```python
 
@@ -214,10 +214,10 @@ When we run this through our ResNet model, here's what comes out:
     <img src="https://slizb.github.io/img/posts/saliency_maps/dirk_no_ball.png" width="800">
 </p>
 
-The result is barely different when the basketball is removed! And, amazingly, the model still classifies the image as basketball. This is either an impressive display of the model's ability to pick up on visual context, or a disapointing indication of over-fitting. Either way, this example conveys the powerful insight available in saliency maps.
+The result is barely different when the basketball is removed! And, amazingly, the model still classifies the image as basketball. This is either an impressive display of the model's ability to pick up on visual context, or a disapointing indication of over-fitting. Either way, this example conveys the powerful insights that can be uncovered with saliency maps.
 
 ## Conclusions
 
-Let's recap up what I've done here. I introduced saliency maps, which tell us which pixels in an image contribute most to a model’s classification of that image to a given class. Then, I demonstrated how to make a saliency map using the *keras-vis* package, and I used a gaussian filter to smoothe out the results for improved interpretation. Finally, I used some saliency map examples to demonstrate the concepts of visual context learning, and poor generalization.
+Let's recap what I've done here. I introduced saliency maps, which tell us which pixels in an image contribute most to a model’s classification of that image to a given class. Then, I demonstrated how to make a saliency map using the *keras-vis* package, and I used a gaussian filter to smoothe out the results for improved interpretation. Finally, I used some saliency map examples to demonstrate the concepts of visual context learning, and poor generalization. If you're building neural networks for classification, saliency maps can be valuable tools for explaining the decision making process, and debugging unexpected behavior.
 
 That's all!  I hope you enjoyed the post!
