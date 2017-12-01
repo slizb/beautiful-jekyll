@@ -1,13 +1,10 @@
 ---
 layout: post
 title: Where the Machines are Looking
-subtitle: Visualization of neural networks using saliency maps.
+subtitle: Visualizing the brains of neural networks using saliency maps.
 image: /img/kid_backpack_thumb.png
 tags: [computer-vision, deep-learning]
 ---
-
-# *** THIS POST IS UNDER CONSTRUCTION ***
-# *** PLEASE DO NOT SHARE ***
 
 #### *What is this about?*
 In this post, I walk through the use of saliency maps to visualize the decision-making process of a neural network model. 
