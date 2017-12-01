@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Where the Machines are Looking
-subtitle: Visualizing the brains of neural networks using saliency maps.
+subtitle: Visualizing the attention of neural networks using saliency maps.
 image: /img/kid_backpack_thumb.png
 tags: [computer-vision, deep-learning]
 ---
