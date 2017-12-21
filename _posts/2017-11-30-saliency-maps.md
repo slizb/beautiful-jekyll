@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Where the Machines are Looking
-subtitle: Visualizing attention in neural networks using saliency maps.
+subtitle: When to trust a computer vision model.
 image: /img/kid_backpack_thumb.png
 tags:
   - computer-vision
@@ -10,10 +10,10 @@ published: true
 ---
 
 #### *What is this about?*
-In this post, I walk through the use of saliency maps to visualize the decision-making process of a neural network model. 
+In this post, I probe the decision-making process of a neural network model, and expose an example of errant model performance in one of the most popular pre-trained networks. 
 #### *Why should I care?*
 Neural networks are often considered to be black-box models, whose decisions are made behind a mysterioius veil. While their 
-decision making process can indeed be complex, its not all hidden to us, and saliency maps are here to help make sense of it. 
+decision making process can indeed be complex, its not all hidden to us, there are tools at our disposal to help make sense of it. 
 #### *Want to learn more?*
 This blog post is awesome, but you'll learn a lot more from a book than from me... If you're interested in learning more about computer vision, check out these books on Amazon:
 
@@ -32,7 +32,7 @@ In other words, saliency can be computed for a given image, and a given class. *
 There happens to be a great python package by Raghavendra Kotikalapudi called [*keras-vis*](https://github.com/raghakot/keras-vis) that supports saliency map visualization for Keras models. Lets try it out!
 
 ## Demo
-First, we need a model to test out. For simplicity, let's just use a pre-trained model... I choose ResNet:
+First, we need a model to test out. For simplicity, let's just use a pre-trained model... I choose one of the most popular models out there right now: ResNet:
 
 ```python
 
