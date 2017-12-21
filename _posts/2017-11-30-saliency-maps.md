@@ -15,8 +15,7 @@ In this post, I walk through the use of saliency maps to visualize the decision-
 Neural networks are often considered to be black-box models, whose decisions are made behind a mysterioius veil. While their 
 decision making process can indeed be complex, its not all hidden to us, and saliency maps are here to help make sense of it. 
 #### *Want to learn more?*
-This blog post is awesome, but you'll learn a lot more from a book than from me... If you're interested in learning more about 
-computer vision, check out these books:
+This blog post is awesome, but you'll learn a lot more from a book than from me... If you're interested in learning more about computer vision, check out these books on Amazon:
 
 <a target="_blank"  href="https://www.amazon.com/gp/product/1449316549/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449316549&linkCode=as2&tag=bradsliz-20&linkId=2677dd61d3f60f4591bb72ee360ea69c"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=1449316549&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=1449316549" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 <a target="_blank"  href="https://www.amazon.com/gp/product/0123869080/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0123869080&linkCode=as2&tag=bradsliz-20&linkId=57b94134964d2abd4b9a790fe27fb51b"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=0123869080&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bradsliz-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=bradsliz-20&l=am2&o=1&a=0123869080" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
