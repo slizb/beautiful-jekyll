@@ -226,6 +226,6 @@ Yikes! This should be the easiest example yet, but the model is just way out-of-
 
 ## Conclusions
 
-Let's recap what I've done here. I introduced saliency maps, which tell us which pixels in an image contribute most to a model’s classification of that image to a given class. Then, I demonstrated how to make a saliency map using the *keras-vis* package, and I used a gaussian filter to smoothe out the results for improved interpretation. Finally, I used some saliency map examples to demonstrate the concepts of visual context learning, and poor generalization. If you're building neural networks for classification, saliency maps can be valuable tools for explaining the decision making process, and debugging unexpected behavior.
+Let's recap. Neural networks are not just black-box models. There are techniques we can use to see inside a given network's decision making process.  Saliency mapping is one, it tells us which pixels in an image contribute most to a model’s classification of that image to a given class. I demonstrated how to make a saliency map using the *keras-vis* package, and I used a gaussian filter to smoothe out the results for improved interpretation. Finally, I used some saliency map examples to demonstrate the concepts of visual context learning, and poor generalization. If you're building neural networks for classification, saliency maps can be valuable tools for explaining the decision making process, and debugging unexpected behavior.
 
 That's all!  I hope you enjoyed the post!
