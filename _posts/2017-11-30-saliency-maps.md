@@ -223,7 +223,7 @@ The result is barely different when the basketball is removed! And, amazingly, t
     <img src="https://slizb.github.io/img/posts/saliency_maps/just_ball.png" width="800">
 </p>
 
-Yikes! This should be the easiest example yet, but the model is just way out-of-bounds (*ba-doom-tss*). Somebody call the classifier police... It appears that somewhere in the training process, the model learned to ignore the basketball in the image, and just look at its surroundings. If I were making an application to detect basketballs, this would not cut it. With this example, we have a perfect case of how saliency maps can help uncover errant model performance.
+Yikes! This should be the easiest example yet, but the model is just way out-of-bounds (*ba-doom-tss*). It appears that somewhere in the training process, the model learned to ignore the basketball in the image, and just look at its surroundings. If I were making an application to detect basketballs, this would not cut it. With this example, we have a perfect case of how saliency maps can help uncover errant model performance.
 
 ## Conclusions
 
