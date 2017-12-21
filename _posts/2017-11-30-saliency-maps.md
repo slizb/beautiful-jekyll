@@ -3,7 +3,10 @@ layout: post
 title: Where the Machines are Looking
 subtitle: Visualizing attention in neural networks using saliency maps.
 image: /img/kid_backpack_thumb.png
-tags: [computer-vision, deep-learning]
+tags:
+  - computer-vision
+  - deep-learning
+published: true
 ---
 
 #### *What is this about?*
@@ -214,7 +217,13 @@ When we run this through our ResNet model, here's what comes out:
     <img src="https://slizb.github.io/img/posts/saliency_maps/dirk_no_ball.png" width="800">
 </p>
 
-The result is barely different when the basketball is removed! And, amazingly, the model still classifies the image as basketball. This is either an impressive display of the model's ability to pick up on visual context, or a disapointing indication of over-fitting. Either way, this example conveys the powerful insights that can be uncovered with saliency maps.
+The result is barely different when the basketball is removed! And, amazingly, the model still classifies the image as basketball. This is either an impressive display of the model's ability to pick up on visual context, or a disapointing indication of over-fitting. Let's try one more case, where everything in the image is masked *except* the basketball:
+
+<p align="center">
+    <img src="https://slizb.github.io/img/posts/saliency_maps/just_ball.png" width="800">
+</p>
+
+Yikes! This should be the easiest example yet, but the model is just way out-of-bounds (*ba-doom-tss*). Somebody call the classifier police... It appears that somewhere in the training process, the model learned to ignore the basketball in the image, and just look at its surroundings. If I were making an application to detect basketballs, this would not cut it. With this example, we have a perfect case of how saliency maps can help uncover errant model performance.
 
 ## Conclusions
 
