@@ -5,7 +5,7 @@ subtitle: A display of the elegant simplicity of word vectors, and how to use th
 image:
 tags:
   - nlp
-published: false
+published: true
 ---
 # [THIS POST IS IN ACTIVE DEVELOPMENT. PLEASE DO NOT SHARE]
 
