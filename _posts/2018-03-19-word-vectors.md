@@ -4,7 +4,7 @@ title: I Love, Love, Love Word Vectors!
 subtitle: A display of the elegant simplicity of word vectors, and how to use them
 image:
 tags:
-  - nlp
+  - natural language processing
 published: true
 ---
 # [THIS POST IS IN ACTIVE DEVELOPMENT. PLEASE DO NOT SHARE]
@@ -118,4 +118,4 @@ tsne_space.shape
 
 TSNE finishes the job, leaving us with just 2 dimensions -which can be visualized much more easily. Now to visualize and explore these results. [Bokeh](https://bokeh.pydata.org/en/latest/) is one nice option for interactive visualization that might lend to exploring our new compressed vector space. [TRANSITION INTO INTERACTIVE PLOT / CODE]
 
-<iframe src="tsne_bokeh.html" seamless></iframe>
+{% include posts/word_vectors/tsne_bokeh.html %}
