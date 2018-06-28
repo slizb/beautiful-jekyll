@@ -2,7 +2,7 @@
 layout: post
 title: I Love, Love, Love Word Vectors!
 subtitle: A display of the elegant simplicity of word vectors, and how to use them
-image:
+image: img/posts/word_vectors/vectors.png
 tags:
   - natural language processing
 published: true
@@ -25,7 +25,7 @@ Vector Space](https://arxiv.org/pdf/1301.3781.pdf)*- followed shortly after by t
 Though not the first known use of word vectors, their work was seminal because of their impressive performance, and the intrigue their results generated. They demonstrate the consistent relationship between like words in vector space:
 
 <p align="center">
-    <img src="../../img/posts/word-vectors/country_capital.png" width="500">
+    <img src="../../img/posts/word_vectors/country_capital.png" width="500">
 </p>
 
 They also demonstrated the impressive learned mathematical properties of their vectors, such as:
@@ -43,7 +43,7 @@ Needless-to-say, since 2013, many advancements have been made in the development
 Here's a fun example from Kaggle datasets -[Women's E-Commerce Clothing Reviews.](https://www.kaggle.com/nicapotato/womens-ecommerce-clothing-reviews)This is a Women’s Clothing E-Commerce dataset revolving around the reviews written by customers. It spans over 20000 rows across 10 feature variables, including a free-form text review.
 
 <p align="center">
-    <img src="reviews-data-frame.png" width="800">
+    <img src="img/posts/word_vectors/reviews-data-frame.png" width="800">
 </p>
 
 Now lets find some word vectors.  [Glove -*Global Vectors for Word Representation*-](https://nlp.stanford.edu/projects/glove/) are some of the most widely used, and they can be freely downloaded at the link above. After downloading them, we can  load them up using the python package `gensim`:
