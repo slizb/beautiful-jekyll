@@ -1,13 +1,12 @@
 ---
 layout: post
 title: I Love, Love, Love Word Vectors!
-subtitle: A display of the elegant simplicity of word vectors, and how to use them
+subtitle: A simple introduction to word vectors, and how to use them
 image: /img/posts/word_vectors/vectors.png
 tags:
   - natural language processing
 published: true
 ---
-# [THIS POST IS IN ACTIVE DEVELOPMENT. PLEASE DO NOT SHARE]
 
 #### *What is this about?*
 In this post, I walk through a typical workflow using word vectors to analyze unstructured text documents. I also show how a dimensionality reduction technique like TSNE can be leveraged to visualize patterns in the vector space.  
@@ -17,7 +16,7 @@ If you know nothing about word vectors, they may seem mysterious, complex, or ev
 This blog post is awesome, but you'll learn a lot more from a book than from me... If you're interested in learning more about natural language processing, check out these books on Amazon:
 
 ## Background
-In my time as an analytics professional, I've been in a lot of conversations about how best to analyze text. I am consistently surprised at the lack of familiarity with word vectors.
+In my time as an analytics professional, I've been in a lot of conversations about how best to analyze text. The most effective -and simplest- approach often includes word vectors.
 
 In 2013, Tomas Mikolov et al from Google made a big (lasting) splash with their introduction of the Skip-gram method for vectorizing words -*[Efficient Estimation of Word Representations in
 Vector Space](https://arxiv.org/pdf/1301.3781.pdf)*- followed shortly after by their NIPS paper *[Distributed Representations of Words and Phrases and their Compositionality. ](https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf)*
@@ -34,8 +33,6 @@ They also demonstrated the impressive learned mathematical properties of their v
 * `vector(copper) - vector(Cu) + vector(zinc) ≈ vector(Zn)`
 
 * `vector(Einstein) - vector(scientist) + vector(Messi) ≈ vector(midfielder)`
-
-[DIAGRAM HERE + DESCRIPTION OF HOW IT WORKS]
 
 Needless-to-say, since 2013, many advancements have been made in the development of word vectors, and they have been ubiquitous with the latest research in NLP.
 
@@ -87,12 +84,24 @@ def vectorize_document(document, model):
     return mean_document_vector
 
 document_vectors = df['clean_review'].apply(lambda x: vectorize_document(x, model))
+```
+
+Let's wrap the results into a dataframe, and check its shape:
+
+``` python
 vec_df = pd.DataFrame(list(document_vectors))
 vec_df.shape
 ```
+
 `(22641, 300)`
 
-So our resulting dataframe contains an observation for each review.  Each observation spans 300 columns -the length of our word vectors- and represents the average word vector of its review. This may seem strange... ***what exactly is an average word vector*** anyway? Consider a simpler case: a vector space with 3 dimensions.  Say we have 2 observations in this 3D space. The average vector representation would be a new point right between our two observations. This concept holds true in word-vector space too, only across many more dimensions.
+Our resulting dataframe contains an observation for each review, and each observation spans 300 columns -the length of our input word vectors. In short, each observation in this dataframe represents the average word vector of its review. This may seem strange... ***what exactly is an average word vector*** anyway? Consider a simpler case: a vector space with 2 dimensions.  Say we have 2 observations in this 2D space -point A and point B.
+
+<p align="center">
+    <img src="../../img/posts/word_vectors/midpoint.png" width="800">
+</p>
+
+The average vector representation of A and B would be a new point right between them -point C. This concept holds true in word-vector space too, only across many more dimensions.
 
 Beyond understanding the vector space, its *still* kind of a strange concept. A word vector represents the learned semantic / syntactic meaning of a word compressed into a vector of numbers. And, we're pooling these across all the words of a given review. Though it may feel weird to compute average word vectors, the result captures the ***collective meaning*** conveyed in a review.
 
@@ -116,6 +125,8 @@ tsne_space.shape
 ```
 `(22641, 2)`
 
-TSNE finishes the job, leaving us with just 2 dimensions -which can be visualized much more easily. Now to visualize and explore these results. [Bokeh](https://bokeh.pydata.org/en/latest/) is one nice option for interactive visualization that might lend to exploring our new compressed vector space. [TRANSITION INTO INTERACTIVE PLOT / CODE]
+TSNE finishes the job, leaving us with just 2 dimensions -which can be visualized much more easily. Now to visualize and explore these results. [Bokeh](https://bokeh.pydata.org/en/latest/) is one nice option for interactive visualization that might lend to exploring our new compressed vector space.
 
 {% include posts/word_vectors/tsne_bokeh.html %}
+
+The above interactive visual can be used to explore the vector space. You can observe some clear patterns, where similar reviews appear closely together. For example, ...
