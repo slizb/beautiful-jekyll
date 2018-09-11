@@ -129,4 +129,5 @@ TSNE finishes the job, leaving us with just 2 dimensions -which can be visualize
 
 <div> {% include posts/word_vectors/tsne_bokeh.html %} </div>
 
+## -
 The above interactive visual can be used to explore the vector space. You can observe some clear patterns, where similar reviews appear closely together. For example, ...
