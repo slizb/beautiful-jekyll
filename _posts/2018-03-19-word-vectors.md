@@ -127,7 +127,10 @@ tsne_space.shape
 
 TSNE finishes the job, leaving us with just 2 dimensions -which can be visualized much more easily. Now to visualize and explore these results. [Bokeh](https://bokeh.pydata.org/en/latest/) is one nice option for interactive visualization that might lend to exploring our new compressed vector space.
 
-<div> {% include posts/word_vectors/tsne_bokeh.html %} </div>
+<div class="darker"> 
+  <div class="container">
+    {% include posts/word_vectors/tsne_bokeh.html %} 
+  </div>
+</div>
 
-## -
 The above interactive visual can be used to explore the vector space. You can observe some clear patterns, where similar reviews appear closely together. For example, ...
