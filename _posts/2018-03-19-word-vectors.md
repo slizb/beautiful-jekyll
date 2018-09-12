@@ -12,8 +12,6 @@ published: true
 In this post, I walk through a typical workflow using word vectors to analyze unstructured text documents. I also show how a dimensionality reduction technique like TSNE can be leveraged to visualize patterns in the vector space.  
 #### *Why should I care?*
 If you know nothing about word vectors, they may seem mysterious, complex, or even magical. While these points may be true, they are also really simple, powerful, and easy to use.
-#### *Want to learn more?*
-This blog post is awesome, but you'll learn a lot more from a book than from me... If you're interested in learning more about natural language processing, check out these books on Amazon:
 
 ## Background
 In my time as an analytics professional, I've been in a lot of conversations about how best to analyze text. The most effective -and simplest- approach often includes word vectors.
