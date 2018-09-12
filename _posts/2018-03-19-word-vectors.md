@@ -131,4 +131,6 @@ TSNE finishes the job, leaving us with just 2 dimensions -which can be visualize
   </div>
 </div>
 
-The above interactive visual can be used to explore the vector space. You can observe some clear patterns, where similar reviews appear closely together. For example, ...
+The above interactive visual can be used to explore the vector space. You can observe some clear patterns, where similar reviews appear closely together. For example, the reviews for the 'Bottoms' department generally cluster together in the lower left quadrant. It may be that the embeddings are picking up on mentions of 'legs' and 'butts,' but It may also be that there is a *distinct language* which women use to talk about 'Bottoms' apparel. Take for example this review: 
+>*They fit snug and accentuate all the right curves. they could be shorter. the lace up sides are interesting, but i might sacrifice the lace ups for making them shorter. actually they are cuter on in person than in this photo."*
+Without a single mention of a body part or article of clothing, it is clear to me that this reviewer is talking about a pair of pants.
