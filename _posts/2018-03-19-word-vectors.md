@@ -33,7 +33,7 @@ Other impressive examples include:
 
 * `vector(Einstein)` - `vector(scientist)` + `vector(Messi)` ≈ `vector(midfielder)`
 
-Needless-to-say, since 2013, many advancements have been made in the development of word vectors, and they have been ubiquitous with the latest research in NLP.
+Needless-to-say, since 2013, many advancements have been made in the development of word vectors, and they have been ubiquitous with the latest research in NLP. Though it is also possible to train your own custom word vectors, in this post I will demo how you can use pre-trained vectors and still get meaningful results.
 
 ## Demo
 Here's a fun example from Kaggle datasets -[Women's E-Commerce Clothing Reviews.](https://www.kaggle.com/nicapotato/womens-ecommerce-clothing-reviews)This is a Women’s Clothing E-Commerce dataset revolving around the reviews written by customers. It spans over 20000 rows across 10 feature variables, including a free-form text review.
@@ -144,3 +144,7 @@ Without a single mention of a body part or article of clothing, it is clear to m
 
 The negativity of these reviews does come out in the language. It is impressive that the word vectors picked up on it, despite some confounding emotions in the writing, such as: *"I **like** the fabric (nice and thick) but it **did not work** for me."* Recall also that these patterns are being viewed in a highly compressed dimension-space (from 300 down to 2), so you can expect them to be even more distinct without compression.
 
+## Conclusions
+Let’s wrap up what I’ve done here: I loaded the GloVe word vectors, then used them to compute average vectors for a set of clothing reviews. Then, I visualized the results in a compressed T-SNE space. It was easy to pick out a few patterns in the data, and these demonstrated how similar reviews tend to be clustered closely together. All of this shows how word vectors can capture meanigful information from unstructured text.
+
+That’s all, I hope you enjoyed reading!
