@@ -132,7 +132,15 @@ TSNE finishes the job, leaving us with just 2 dimensions -which can be visualize
   </div>
 </div>
 
-The above interactive visual can be used to explore the vector space. You can observe some clear patterns, where similar reviews appear closely together. For example, the reviews for the 'Bottoms' department generally cluster together in the lower left quadrant. It may be that the embeddings are picking up on mentions of 'legs' and 'butts,' but It may also be that there is a *distinct language* which women use to talk about 'Bottoms' apparel. Take for example this review: 
->*They fit snug and accentuate all the right curves. they could be shorter. the lace up sides are interesting, but i might sacrifice the lace ups for making them shorter. actually they are cuter on in person than in this photo."*
+The above interactive visual can be used to explore the vector space. You can observe some clear patterns, where similar reviews appear closely together. For example, the reviews for the 'Bottoms' department generally cluster together in the lower right quadrant of the plot. It may be that the embeddings are picking up on mentions of 'legs' and 'butts,' but It may also be that there is a *distinct language* which women use to talk about 'Bottoms' apparel. Take for example this review: 
 
-Without a single mention of a body part or article of clothing, it is clear to me that this reviewer is talking about a pair of pants.
+>*They fit snug and accentuate all the right curves. They could be shorter. The lace up sides are interesting, but i might sacrifice the lace ups for making them shorter. Actually they are cuter on in person than in this photo.*
+
+Without a single mention of a body part or article of clothing, it is clear to me that this reviewer is talking about a pair of pants, as seems to be a pattern with this cluster of reviews. Let's consider another example from the vector space... Both the `Recommended IND` and `Rating` features also manifest an interesting visual pattern -there seems to be a unique cluster toward the middle and upper right portion of each of these tab's plot. Upon further inspection, it appears to reflect the sentiment of the reviews. Consider this example:
+
+>*The sleeves were very tight in the upper arm area but the body was blousy, too blousy so to go up a size for the arms would mean it would be very oversized in the body. I like the fabric (nice and thick) but it did not work for me.*
+
+>*I thought from the picture this would be a light floaty top. When it arrived, the fabric was a heavy knit and the neckline sagged very low on me (granted I'm a pear) the bottom layer hugged my tummy and rear in a very unflattering way. The only thing I liked was the color. Back it went.*
+
+The negativity of these reviews does come out in the language. It is impressive that the word vectors picked up on it, despite some confounding emotions in the writing, such as: *"I **like** the fabric (nice and thick) but it **did not work** for me."* Recall also that these patterns are being viewed in a highly compressed dimension-space (from 300 down to 2), so you can expect them to be even more distinct without compression.
+
